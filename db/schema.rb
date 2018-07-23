@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180723044416) do
   end
 
   create_table "member_dgs", force: :cascade do |t|
-    t.boolean "attended"
+    t.boolean "attended", default: false
     t.integer "member_id"
     t.integer "discussionGroup_id"
     t.datetime "created_at", null: false
