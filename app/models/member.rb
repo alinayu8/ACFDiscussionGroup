@@ -2,7 +2,7 @@ require "csv"
 
 class Member < ApplicationRecord
   belongs_to :cellGroup
-  has_many :me
+  has_many :memberDgs
 
   # Validations
   validates_inclusion_of :gender, in: %w( male female ), message: "is not recognized in the system"
@@ -28,7 +28,12 @@ class Member < ApplicationRecord
     members = CSV.parse(new_members)
     members.each do |m|
       m = m.split(",").map(&:strip)
-      if m.size > 1 
+      if m.size == 2
+        if m[1] in %w[male female]
+          Member.create(:name => m[0], :gender => m[1])
+        else
+          Member.create(:name => m[0], :cellGroup => m[1])
+      elsif m.size == 3
         Member.create(:name => m[0], :cellGroup => m[1], :gender => m[2])
       else
         errors.add(m[0], “must have either cell group or gender listed”)
