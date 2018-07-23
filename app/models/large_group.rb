@@ -1,0 +1,2 @@
+class LargeGroup < ApplicationRecord
+end

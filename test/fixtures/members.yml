@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  gender: MyString
+  is_leader: false
+  cellGroup: one
+
+two:
+  name: MyString
+  gender: MyString
+  is_leader: false
+  cellGroup: two

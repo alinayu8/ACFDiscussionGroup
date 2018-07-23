@@ -1,0 +1,2 @@
+class CellGroup < ApplicationRecord
+end

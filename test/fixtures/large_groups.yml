@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2018-07-22
+  session_number: 1
+  semester: MyString
+
+two:
+  date: 2018-07-22
+  session_number: 1
+  semester: MyString
