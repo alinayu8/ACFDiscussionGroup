@@ -35,7 +35,7 @@ class Member < ApplicationRecord
         else
           Member.create(:name => m[0], :cellGroup => m[1])
       elsif m.size == 3
-        Member.create(:name => m[0], :cellGroup => m[1], :gender => m[2])
+        Member.create(:name => m[0], :cellGroup => m[1], :gender => m[2], :is_leader => false)
       else
         errors.add(m[0], “must have either cell group or gender listed”)
       end

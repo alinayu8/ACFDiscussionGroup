@@ -3,22 +3,22 @@ module Contexts
       # Context for items (assumes no prior contexts)
   
       def create_dgs
-        @kindle = FactoryBot.create(:CellGroup)
-        @encounter = FactoryBot.create(:CellGroup, name: "Encounter", gender: "female")
-        @haven = FactoryBot.create(:CellGroup, name: "Haven", gender: "female")
-        @axial = FactoryBot.create(:CellGroup, name: "Axial", gender: "male")
-        @delta = FactoryBot.create(:CellGroup, name: "Delta", gender: "male")
-        @beacon = FactoryBot.create(:CellGroup, name: "Beacon", gender: "male")
+        @alinadg = FactoryBot.create(:discussionGroup, largeGroup: @lg1)
+        @valeriedg = FactoryBot.create(:discussionGroup, name: "Valerie Wan", gender: "female", largeGroup: @lg1)
+        @abbeydg = FactoryBot.create(:discussionGroup, name: "Abbey Ott", gender: "female", largeGroup: @lg1)
+        @nowadg = FactoryBot.create(:discussionGroup, name: "Nowa Bronner", gender: "male", largeGroup: @lg1)
+        @andrewdg = FactoryBot.create(:discussionGroup, name: "Andrew Kwon", gender: "male", largeGroup: @lg1)
+        @charliedg = FactoryBot.create(:discussionGroup, name: "Charlie Ma", gender: "male", largeGroup: @lg1)
       end
   
-      def destroy_cgs
-        @kindle.delete
-        @encounter.delete
-        @haven.delete
-        @axial.delete
-        @delta.delete
-        @beacon.delete
+      def destroy_dgs
+        @alinadg.delete
+        @valeriedg.delete
+        @abbeydg.delete
+        @nowadg.delete
+        @andrewdg.delete
+        @charliedg.delete
       end
   
     end
-  end
+end
