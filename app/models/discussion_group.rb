@@ -9,6 +9,7 @@ class DiscussionGroup < ApplicationRecord
   scope :for_lg ->(lg) { where(largeGroup: lg) }
   scope :for_name, ->(name) { where(name: name) }
   scope :alphabetical, -> { order("name") }
+  scope :for_gender, -> (gender) { where(Member.find_by(name: self.name).gender == gender}
 
   # Functions
   def name_is_leaders_name
@@ -17,6 +18,39 @@ class DiscussionGroup < ApplicationRecord
     end
   end
 
+  # initialize the discussion groups per cell group; distribute the unassociated members to appropriate dgs
+  def initialize_dgs(large_group)
+    # create dgs
+    Member.all.for_leader.each do |m|
+      @dg = DiscussionGroup.create(name: m.name, largeGroup: large_group)
+      m.cellGroup.members do |m|
+        MemberDgs.create(member: m, discussionGroup: @dg, attended: false)
+      end
+    end
+    # assign the other members
+    male_dgs = DiscussionGroup.all.shuffle.for_gender("male")
+    female_dgs = DiscussionGroup.all.shuffle.for_gender("female")
+    other_members = Member.all.no_cg
+
+    other_members.each do |m|
+      # "restock" dgs to assign
+      if male_dgs.empty?
+        male_dgs = DiscussionGroup.all.shuffle.for_gender("male")
+      elsif female_dgs.empty?
+        female_dgs = DiscussionGroup.all.shuffle.for_gender("female")
+      end
+
+      # assign by gender
+      if m.gender == "male"
+        MemberDgs.create(member: m, discussionGroup: male_dgs.first, attended: false)
+        male_dgs.delete(male_dgs.first)
+      else 
+        MemberDgs.create(member: m, discussionGroup: female_dgs.first, attended: false)
+        male_dgs.delete(female_dgs.first)
+      end
+  end
+
+  # randomize the members of cell groups
   def randomize
     array_1 = []
     array_2 = []

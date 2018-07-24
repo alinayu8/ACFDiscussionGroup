@@ -13,6 +13,7 @@ class Member < ApplicationRecord
   scope :for_gender, ->(gender) { where(gender: gender) }
   scope :for_cg, ->(cg) { where(cg: cellGroup) }
   scope :for_leader, -> { where(is_leader: true) }
+  scope :no_cg, -> { where(cellGroup: nil) }
 
   # Functions
 
