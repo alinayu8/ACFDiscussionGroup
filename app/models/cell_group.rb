@@ -7,4 +7,5 @@ class CellGroup < ApplicationRecord
 
     # Scopes
     scope :for_gender, ->(gender) { where(gender: gender) }
+    scope :alphabetical, -> { order("name") }
 end

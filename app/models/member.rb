@@ -12,7 +12,7 @@ class Member < ApplicationRecord
   scope :alphabetical, -> { order('name') }
   scope :for_gender, ->(gender) { where(gender: gender) }
   scope :for_cg, ->(cg) { where(cg: cellGroup) }
-  scope :for_leader, ->(leader) { where(is_leader: true) }
+  scope :for_leader, -> { where(is_leader: true) }
 
   # Functions
 
