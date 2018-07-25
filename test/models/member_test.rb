@@ -2,14 +2,12 @@ require 'test_helper'
 
 class MemberTest < ActiveSupport::TestCase
     context "Creating context" do
-        setup do 
-            create_cellGroups
-            create_members
+        setup do
+            create_cgs
         end
         
         teardown do
-            destroy_cellGroups
-            destroy_members
+            destroy_cgs
         end
       
         should "parse through text of names" do
@@ -20,14 +18,14 @@ class MemberTest < ActiveSupport::TestCase
             
             """
             Member.member_list(text)
-            assert equal Member.all.count, 13
+            assert_equal Member.all.map(&:name), ["Christian", "Hanna", "Nick"]
 
             bad_text = """
             James, Axial, male
             Jason
             """
             Member.member_list(bad_text)
-            assert equal Member.all.count, 14
+            assert_equal Member.all.count, 3
 
             worse_text = """
             Annabelle
@@ -36,7 +34,7 @@ class MemberTest < ActiveSupport::TestCase
             John, Boop, male
             """
             Member.member_list(worse_text)
-            assert equal Member.all.count, 14
+            assert_equal Member.all.count, 3
         end
     end
 end

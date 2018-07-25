@@ -19,10 +19,10 @@ class DiscussionGroup < ApplicationRecord
   end
 
   # initialize the discussion groups per cell group; distribute the unassociated members to appropriate dgs
-  def initialize_dgs(large_group)
+  def self.initialize_dgs(large_group)
     # create dgs
     Member.all.for_leader.each do |m|
-      @dg = DiscussionGroup.create(name: m.name, largeGroup: large_group)
+      @dg = DiscussionGroup.create!(name: m.name, largeGroup: large_group)
       m.cellGroup.members do |m|
         MemberDgs.create(member: m, discussionGroup: @dg, attended: false)
       end
@@ -42,10 +42,10 @@ class DiscussionGroup < ApplicationRecord
 
       # assign by gender
       if m.gender == "male"
-        MemberDgs.create(member: m, discussionGroup: male_dgs.first, attended: false)
+        MemberDgs.create!(member: m, discussionGroup: male_dgs.first, attended: false)
         male_dgs.delete(male_dgs.first)
       else 
-        MemberDgs.create(member: m, discussionGroup: female_dgs.first, attended: false)
+        MemberDgs.create!(member: m, discussionGroup: female_dgs.first, attended: false)
         male_dgs.delete(female_dgs.first)
       end
   end

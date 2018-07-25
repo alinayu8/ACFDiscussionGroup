@@ -1,5 +1,3 @@
-require "csv"
-
 class Member < ApplicationRecord
   belongs_to :cellGroup, optional: true
   has_many :memberDgs
