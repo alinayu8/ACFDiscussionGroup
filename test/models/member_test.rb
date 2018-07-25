@@ -17,6 +17,7 @@ class MemberTest < ActiveSupport::TestCase
             Christian, Beacon, male
             Hanna, Kindle
             Nick, male
+
             """
             Member.member_list(text)
             assert equal Member.all.count, 13
@@ -26,13 +27,16 @@ class MemberTest < ActiveSupport::TestCase
             Jason
             """
             Member.member_list(bad_text)
-            assert equal Member.all.count, 11
+            assert equal Member.all.count, 14
 
             worse_text = """
             Annabelle
+            Bloop, Bloop, Bloop
+            Beep, Beep, Beep, Beep
+            John, Boop, male
             """
             Member.member_list(worse_text)
-            assert equal Member.all.count, 10
+            assert equal Member.all.count, 14
         end
     end
 end
