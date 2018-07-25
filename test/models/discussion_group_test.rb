@@ -5,16 +5,18 @@ class DiscussionGroupTest < ActiveSupport::TestCase
         setup do 
             create_cgs
             create_lgs
+            create_members
         end
         
         teardown do
             destroy_cgs
             destroy_lgs
+            destroy_members
         end
     
         should "initialize discission groups" do
             DiscussionGroup.initialize_dgs(@lg1)
-            assert_equal DiscussionGroup.all.count, 6
+            assert_equal DiscussionGroup.count, 6
         end
     end
 end

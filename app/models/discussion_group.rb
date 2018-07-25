@@ -28,26 +28,29 @@ class DiscussionGroup < ApplicationRecord
       end
     end
     # assign the other members
-    male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "male" }.shuffle
-    female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "female" }.shuffle
+    og_male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "male" }.shuffle
+    og_female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "female" }.shuffle
+    male_dgs = og_male_dgs
+    female_dgs = og_male_dgs
     other_members = Member.all.no_cg
 
     other_members.each do |m|
       # "restock" dgs to assign
       if male_dgs.empty?
-        male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "male" }.shuffle
+        male_dgs = og_male_dgs
       elsif female_dgs.empty?
-        female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "female" }.shuffle
+        female_dgs = og_female_dgs
       end
 
       # assign by gender
       if m.gender == "male"
-        MemberDg.create!(member: m, discussionGroup: male_dgs.first)
+        @dg = male_dgs.first
         male_dgs.delete(male_dgs.first)
       else 
-        MemberDg.create!(member: m, discussionGroup: female_dgs.first)
+        @dg = female_dgs.first
         female_dgs.delete(female_dgs.first)
       end
+      MemberDg.create!(member: m, discussionGroup: @dg)
     end
   end
 

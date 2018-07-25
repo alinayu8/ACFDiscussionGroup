@@ -10,10 +10,10 @@ module Contexts
         @andrew = FactoryBot.create(:member, name: "Andrew Kwon", gender: "male", cellGroup: @delta, is_leader: true)
         @charlie = FactoryBot.create(:member, name: "Charlie Ma", gender: "male", cellGroup: @beacon, is_leader: true)
     
-        @shanice = FactoryBot.create(:member, name: "Shanice Lam", gender: "female", cellGroup: "Kindle", is_leader: false)
-        @stuart = FactoryBot.create(:member, name: "Stuart K", cellGroup: "Beacon", is_leader: false)
+        @shanice = FactoryBot.create(:member, name: "Shanice Lam", gender: "female", cellGroup: @kindle, is_leader: false)
+        @stuart = FactoryBot.create(:member, name: "Stuart K", cellGroup: @beacon, is_leader: false)
         @alex = FactoryBot.create(:member, name: "Alex", gender: "male", is_leader: false)
-        @casey = FactoryBot.create(:member, name: "Casey Li", gender: "female")
+        @casey = FactoryBot.create(:member, name: "Casey Li", gender: "female", is_leader: false)
       end
   
       def destroy_members
