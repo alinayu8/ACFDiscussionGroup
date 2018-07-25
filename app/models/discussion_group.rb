@@ -6,14 +6,13 @@ class DiscussionGroup < ApplicationRecord
   validate :name_is_leaders_name
 
   # Scopes
-  scope :for_lg ->(lg) { where(largeGroup: lg) }
-  scope :for_name, ->(name) { where(name: name) }
+  scope :for_lg, -> (lg) { where(largeGroup: lg) }
+  scope :for_name, -> (name) { where(name: name) }
   scope :alphabetical, -> { order("name") }
-  scope :for_gender, -> (gender) { where(Member.find_by(name: self.name).gender == gender}
 
   # Functions
   def name_is_leaders_name
-    if !(self.name in Member.all.for_leader)
+    if !Member.all.for_leader.map(&:name).include?(self.name)
       errors.add(self.name, "is not the name of a leader")
     end
   end
@@ -23,31 +22,33 @@ class DiscussionGroup < ApplicationRecord
     # create dgs
     Member.all.for_leader.each do |m|
       @dg = DiscussionGroup.create!(name: m.name, largeGroup: large_group)
-      m.cellGroup.members do |m|
-        MemberDgs.create(member: m, discussionGroup: @dg, attended: false)
+      # have to do this ugly call because cellGroup is optional
+      Member.all.have_cg.select{ |mem| mem.cellGroup.name == m.cellGroup.name}.each do |m|
+        MemberDg.create!(member: m, discussionGroup: @dg)
       end
     end
     # assign the other members
-    male_dgs = DiscussionGroup.all.shuffle.for_gender("male")
-    female_dgs = DiscussionGroup.all.shuffle.for_gender("female")
+    male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "male" }.shuffle
+    female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "female" }.shuffle
     other_members = Member.all.no_cg
 
     other_members.each do |m|
       # "restock" dgs to assign
       if male_dgs.empty?
-        male_dgs = DiscussionGroup.all.shuffle.for_gender("male")
+        male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "male" }.shuffle
       elsif female_dgs.empty?
-        female_dgs = DiscussionGroup.all.shuffle.for_gender("female")
+        female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "female" }.shuffle
       end
 
       # assign by gender
       if m.gender == "male"
-        MemberDgs.create!(member: m, discussionGroup: male_dgs.first, attended: false)
+        MemberDg.create!(member: m, discussionGroup: male_dgs.first)
         male_dgs.delete(male_dgs.first)
       else 
-        MemberDgs.create!(member: m, discussionGroup: female_dgs.first, attended: false)
-        male_dgs.delete(female_dgs.first)
+        MemberDg.create!(member: m, discussionGroup: female_dgs.first)
+        female_dgs.delete(female_dgs.first)
       end
+    end
   end
 
   # randomize the members of cell groups
@@ -82,7 +83,6 @@ class DiscussionGroup < ApplicationRecord
           group_1 = array_1
           group_2 = array_2.shuffle
           puts "Going to retry and see if it works"
-          retry
         end
       end
 

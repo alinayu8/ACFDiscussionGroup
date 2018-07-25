@@ -4,10 +4,12 @@ class DiscussionGroupTest < ActiveSupport::TestCase
   context "Creating context" do
         setup do 
             create_cgs
+            create_lgs
         end
         
         teardown do
             destroy_cgs
+            destroy_lgs
         end
     
         should "initialize discission groups" do

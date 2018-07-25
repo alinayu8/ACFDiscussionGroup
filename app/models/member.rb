@@ -16,6 +16,7 @@ class Member < ApplicationRecord
   scope :for_cg, ->(cg) { where(cg: cellGroup) }
   scope :for_leader, -> { where(is_leader: true) }
   scope :no_cg, -> { where(cellGroup: nil) }
+  scope :have_cg, -> { where.not(cellGroup: nil) }
 
   # Functions
   def gender_matches_cg
