@@ -58,6 +58,8 @@ class DiscussionGroup < ApplicationRecord
   def self.randomize(large_group)
     array_1 = []
     array_2 = []
+
+    # if not the first time randomizing dgs
     test_dg = DiscussionGroup.all.where(largeGroup: large_group).first    
     test_mdg = MemberDg.where(discussionGroup: test_dg).first
     if test_mdg.updated_at != test_mdg.created_at
@@ -66,7 +68,6 @@ class DiscussionGroup < ApplicationRecord
       MemberDg.delete(del_mdgs)
       DiscussionGroup.delete(del_dgs)
       DiscussionGroup.initialize_dgs(large_group)
-      pp MemberDg.all
     end
 
     dgs = DiscussionGroup.all.where(largeGroup: large_group).alphabetical
