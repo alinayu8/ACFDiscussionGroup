@@ -17,7 +17,7 @@ class MemberTest < ActiveSupport::TestCase
             Christian, Beacon, male
             Hanna, Kindle
             Nick, male
-
+            
             """
             Member.member_list(text)
             assert equal Member.all.count, 13

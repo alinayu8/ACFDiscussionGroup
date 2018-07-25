@@ -32,7 +32,7 @@ class Member < ApplicationRecord
     end
   end
 
-  # parse member text in order to create
+  # parse member text in order to create new members
   def self.member_list(new_members)
     create_members = []
     members = new_members.strip.split("\n")
@@ -40,7 +40,7 @@ class Member < ApplicationRecord
       m = m.split(",").map(&:strip).reject(&:empty?)
       @name = m[0]
       if m.size == 2
-       if %w[male female].include?(m[1])
+       if %w[male female Male Female].include?(m[1])
           @gender = m[1]
         else
           @gender = CellGroup.find_by(name: m[1]).gender
@@ -55,7 +55,7 @@ class Member < ApplicationRecord
       else
         return "must have either cell group or gender listed, and information must be in proper order"
       end
-      create_members.push(Member.new(:name => @name, :gender => @gender, :cellGroup => @cg))
+      create_members.push(Member.new(:name => @name, :gender => @gender.downcase, :cellGroup => @cg))
       @gender = nil # reset variables
       @cg = nil
     end
