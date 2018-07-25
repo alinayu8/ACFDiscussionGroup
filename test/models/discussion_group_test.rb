@@ -16,7 +16,15 @@ class DiscussionGroupTest < ActiveSupport::TestCase
     
         should "initialize discission groups" do
             DiscussionGroup.initialize_dgs(@lg1)
-            assert_equal DiscussionGroup.count, 6
+            assert_equal MemberDg.count, 10
+        end
+
+        should "shuffle discussion groups" do   
+            DiscussionGroup.initialize_dgs(@lg1)
+            DiscussionGroup.randomize(@lg1)
+            DiscussionGroup.randomize(@lg1)
+            assert_equal MemberDg.all, []
+            
         end
     end
 end
