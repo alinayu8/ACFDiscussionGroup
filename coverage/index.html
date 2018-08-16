@@ -14,18 +14,18 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-07-25T09:53:36-04:00">2018-07-25T09:53:36-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-07-25T22:08:22-04:00">2018-07-25T22:08:22-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="yellow">84.62%</span></span>
+    (<span class="covered_percent"><span class="yellow">81.12%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.56
+         4.75
        </span>
     </span> hits/line)
   </h2>
@@ -33,8 +33,8 @@
   <div>
     <b>12</b> files in total.
     <b>143</b> relevant lines. 
-    <span class="green"><b>121</b> lines covered</span> and
-    <span class="red"><b>22</b> lines missed </span>
+    <span class="green"><b>116</b> lines covered</span> and
+    <span class="red"><b>27</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -132,12 +132,12 @@
       
       <tr>
         <td class="strong"><a href="#b135c5a835f481a37b6bb75a23b7f9184b979404" class="src_link" title="app/models/discussion_group.rb">app/models/discussion_group.rb</a></td>
-        <td class="green strong">93.75 %</td>
-        <td>110</td>
+        <td class="yellow strong">85.94 %</td>
+        <td>112</td>
         <td>64</td>
-        <td>60</td>
-        <td>4</td>
-        <td>11.0</td>
+        <td>55</td>
+        <td>9</td>
+        <td>7.4</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>39</td>
         <td>38</td>
         <td>1</td>
-        <td>5.4</td>
+        <td>4.7</td>
       </tr>
       
       <tr>
@@ -283,11 +283,11 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="green">96.0%</span></span>
+    (<span class="covered_percent"><span class="green">92.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         7.49
+         5.43
        </span>
     </span> hits/line)
   </h2>
@@ -295,8 +295,8 @@
   <div>
     <b>6</b> files in total.
     <b>125</b> relevant lines. 
-    <span class="green"><b>120</b> lines covered</span> and
-    <span class="red"><b>5</b> lines missed </span>
+    <span class="green"><b>115</b> lines covered</span> and
+    <span class="red"><b>10</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -334,12 +334,12 @@
       
       <tr>
         <td class="strong"><a href="#b135c5a835f481a37b6bb75a23b7f9184b979404" class="src_link" title="app/models/discussion_group.rb">app/models/discussion_group.rb</a></td>
-        <td class="green strong">93.75 %</td>
-        <td>110</td>
+        <td class="yellow strong">85.94 %</td>
+        <td>112</td>
         <td>64</td>
-        <td>60</td>
-        <td>4</td>
-        <td>11.0</td>
+        <td>55</td>
+        <td>9</td>
+        <td>7.4</td>
       </tr>
       
       <tr>
@@ -359,7 +359,7 @@
         <td>39</td>
         <td>38</td>
         <td>1</td>
-        <td>5.4</td>
+        <td>4.7</td>
       </tr>
       
       <tr>
@@ -918,11 +918,11 @@
         <div class="source_table" id="b135c5a835f481a37b6bb75a23b7f9184b979404">
   <div class="header">
     <h3>app/models/discussion_group.rb</h3>
-    <h4><span class="green">93.75 %</span> covered</h4>
+    <h4><span class="yellow">85.94 %</span> covered</h4>
     <div>
       <b>64</b> relevant lines. 
-      <span class="green"><b>60</b> lines covered</span> and
-      <span class="red"><b>4</b> lines missed.</span>
+      <span class="green"><b>55</b> lines covered</span> and
+      <span class="red"><b>9</b> lines missed.</span>
     </div>
   </div>
   
@@ -1019,8 +1019,8 @@
           <code class="ruby">  def name_is_leaders_name</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="16">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="12" data-linenumber="16">
+          <span class="hits">12</span>
           
           <code class="ruby">    if !Member.all.for_leader.map(&amp;:name).include?(self.name)</code>
         </li>
@@ -1067,14 +1067,14 @@
           <code class="ruby">    # create dgs</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="24">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="24">
+          <span class="hits">2</span>
           
           <code class="ruby">    Member.all.for_leader.each do |m|</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="25">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="12" data-linenumber="25">
+          <span class="hits">12</span>
           
           <code class="ruby">      @dg = DiscussionGroup.create!(name: m.name, largeGroup: large_group)</code>
         </li>
@@ -1085,14 +1085,14 @@
           <code class="ruby">      # have to do this ugly call because cellGroup is optional</code>
         </li>
       
-        <li class="covered" data-hits="216" data-linenumber="27">
-          <span class="hits">216</span>
+        <li class="covered" data-hits="108" data-linenumber="27">
+          <span class="hits">108</span>
           
           <code class="ruby">      Member.all.have_cg.select{ |mem| mem.cellGroup.name == m.cellGroup.name}.each do |m|</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="28">
-          <span class="hits">32</span>
+        <li class="covered" data-hits="16" data-linenumber="28">
+          <span class="hits">16</span>
           
           <code class="ruby">        MemberDg.create!(member: m, discussionGroup: @dg)</code>
         </li>
@@ -1115,38 +1115,38 @@
           <code class="ruby">    # assign the other members</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="32">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="14" data-linenumber="32">
+          <span class="hits">14</span>
           
           <code class="ruby">    og_male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == &quot;male&quot; }.shuffle</code>
         </li>
       
-        <li class="covered" data-hits="28" data-linenumber="33">
-          <span class="hits">28</span>
+        <li class="covered" data-hits="14" data-linenumber="33">
+          <span class="hits">14</span>
           
           <code class="ruby">    og_female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == &quot;female&quot; }.shuffle</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="34">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="34">
+          <span class="hits">2</span>
           
           <code class="ruby">    male_dgs = og_male_dgs</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="35">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="35">
+          <span class="hits">2</span>
           
           <code class="ruby">    female_dgs = og_male_dgs</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="36">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="36">
+          <span class="hits">2</span>
           
           <code class="ruby">    other_members = Member.all.no_cg</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="37">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="37">
+          <span class="hits">2</span>
           
           <code class="ruby">    other_members.each do |m|</code>
         </li>
@@ -1157,8 +1157,8 @@
           <code class="ruby">      # &quot;restock&quot; dgs to assign</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="39">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="4" data-linenumber="39">
+          <span class="hits">4</span>
           
           <code class="ruby">      if male_dgs.empty?</code>
         </li>
@@ -1199,20 +1199,20 @@
           <code class="ruby">      # assign by gender</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="46">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="4" data-linenumber="46">
+          <span class="hits">4</span>
           
           <code class="ruby">      if m.gender == &quot;male&quot;</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="47">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="47">
+          <span class="hits">2</span>
           
           <code class="ruby">        @dg = male_dgs.first</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="48">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="48">
+          <span class="hits">2</span>
           
           <code class="ruby">        male_dgs.delete(male_dgs.first)</code>
         </li>
@@ -1223,14 +1223,14 @@
           <code class="ruby">      else </code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="50">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="50">
+          <span class="hits">2</span>
           
           <code class="ruby">        @dg = female_dgs.first</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="51">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="2" data-linenumber="51">
+          <span class="hits">2</span>
           
           <code class="ruby">        female_dgs.delete(female_dgs.first)</code>
         </li>
@@ -1241,8 +1241,8 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="53">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="4" data-linenumber="53">
+          <span class="hits">4</span>
           
           <code class="ruby">      MemberDg.create!(member: m, discussionGroup: @dg)</code>
         </li>
@@ -1289,70 +1289,70 @@
           <code class="ruby">    array_2 = []</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="61">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    test_dg = DiscussionGroup.all.where(largeGroup: large_group).first    </code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="62">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    test_mdg = MemberDg.where(discussionGroup: test_dg).first</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="63">
-          <span class="hits">2</span>
-          
-          <code class="ruby">    if test_mdg.updated_at == test_mdg.created_at</code>
-        </li>
-      
-        <li class="covered" data-hits="22" data-linenumber="64">
-          <span class="hits">22</span>
-          
-          <code class="ruby">      del_mdgs = MemberDg.all.select { |mdg| mdg.discussionGroup.largeGroup == large_group}</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="65">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      del_dgs = DiscussionGroup.all.where(largeGroup: large_group)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="66">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      MemberDg.delete(del_mdgs)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="67">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      DiscussionGroup.delete(del_dgs)</code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="68">
-          <span class="hits">2</span>
-          
-          <code class="ruby">      DiscussionGroup.initialize_dgs(large_group)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="69">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="70">
+        <li class="never" data-hits="" data-linenumber="61">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="62">
+          
+          
+          <code class="ruby">    # if not the first time randomizing dgs</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="63">
           <span class="hits">2</span>
           
-          <code class="ruby">    dgs = DiscussionGroup.all.where(largeGroup: large_group).alphabetical</code>
+          <code class="ruby">    test_dg = DiscussionGroup.all.where(largeGroup: large_group).first    </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="64">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    test_mdg = MemberDg.where(discussionGroup: test_dg).first</code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="65">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    if test_mdg.updated_at != test_mdg.created_at</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="66">
+          
+          
+          <code class="ruby">      del_mdgs = MemberDg.all.select { |mdg| mdg.discussionGroup.largeGroup == large_group}</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="67">
+          
+          
+          <code class="ruby">      del_dgs = DiscussionGroup.all.where(largeGroup: large_group)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="68">
+          
+          
+          <code class="ruby">      MemberDg.delete(del_mdgs)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="69">
+          
+          
+          <code class="ruby">      DiscussionGroup.delete(del_dgs)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="70">
+          
+          
+          <code class="ruby">      DiscussionGroup.initialize_dgs(large_group)</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="71">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="72">
@@ -1361,229 +1361,241 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="covered" data-hits="2" data-linenumber="73">
+          <span class="hits">2</span>
+          
+          <code class="ruby">    dgs = DiscussionGroup.all.where(largeGroup: large_group).alphabetical</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="74">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="75">
           
           
           <code class="ruby">    # shuffle each initial discussion group (cell group) and split into 2 halves</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="74">
+        <li class="covered" data-hits="2" data-linenumber="76">
           <span class="hits">2</span>
           
           <code class="ruby">    dgs.each do |dg|</code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="75">
+        <li class="covered" data-hits="32" data-linenumber="77">
           <span class="hits">32</span>
           
           <code class="ruby">      dg_members = MemberDg.where(discussionGroup: dg).select { |mdg| mdg.member.is_leader == false}.shuffle # individual mdgs </code>
         </li>
       
-        <li class="covered" data-hits="32" data-linenumber="76">
+        <li class="covered" data-hits="32" data-linenumber="78">
           <span class="hits">32</span>
           
           <code class="ruby">      leader = MemberDg.where(discussionGroup: dg).select { |mdg| mdg.member.is_leader == true}</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="77">
+        <li class="covered" data-hits="12" data-linenumber="79">
           <span class="hits">12</span>
           
           <code class="ruby">      dg_members.unshift(leader)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="78">
+        <li class="covered" data-hits="12" data-linenumber="80">
           <span class="hits">12</span>
           
           <code class="ruby">      parts = (dg_members.size / 2.0).ceil</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="79">
+        <li class="covered" data-hits="12" data-linenumber="81">
           <span class="hits">12</span>
           
           <code class="ruby">      split_groups = dg_members.each_slice(parts).to_a</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="80">
+        <li class="covered" data-hits="12" data-linenumber="82">
           <span class="hits">12</span>
           
           <code class="ruby">      array_1.push(split_groups[0])</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="81">
+        <li class="covered" data-hits="12" data-linenumber="83">
           <span class="hits">12</span>
           
           <code class="ruby">      dg_members.size == 1 ? index = [] : index = split_groups[1]</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="82">
+        <li class="covered" data-hits="12" data-linenumber="84">
           <span class="hits">12</span>
           
           <code class="ruby">      array_2.push(index)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="83">
+        <li class="never" data-hits="" data-linenumber="85">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="84">
+        <li class="never" data-hits="" data-linenumber="86">
           
           
           <code class="ruby">    # ensure that last 2 in each half aren&#39;t the same</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="85">
+        <li class="covered" data-hits="2" data-linenumber="87">
           <span class="hits">2</span>
           
           <code class="ruby">    until array_2.last.empty? || (dgs.last.name != array_2.last.last.discussionGroup.name)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="86">
+        <li class="missed" data-hits="0" data-linenumber="88">
           
           
           <code class="ruby">      array_2.shuffle!</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="87">
+        <li class="never" data-hits="" data-linenumber="89">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="88">
+        <li class="never" data-hits="" data-linenumber="90">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="89">
+        <li class="never" data-hits="" data-linenumber="91">
           
           
           <code class="ruby">    # compare first two dg halves to match</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="90">
+        <li class="covered" data-hits="2" data-linenumber="92">
           <span class="hits">2</span>
           
           <code class="ruby">    dgs.each do |dg|</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="91">
+        <li class="covered" data-hits="12" data-linenumber="93">
           <span class="hits">12</span>
           
           <code class="ruby">      dg_1 = array_1[0] # array of MDGs</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="92">
+        <li class="covered" data-hits="12" data-linenumber="94">
           <span class="hits">12</span>
           
           <code class="ruby">      dg_2 = array_2[0]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="93">
+        <li class="never" data-hits="" data-linenumber="95">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="94">
+        <li class="never" data-hits="" data-linenumber="96">
           
           
           <code class="ruby">      # &quot;reshuffle&quot; if both dgs halves are from the same dg</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="95">
+        <li class="covered" data-hits="12" data-linenumber="97">
           <span class="hits">12</span>
           
           <code class="ruby">      if dg_2.nil? || dg_2[0].nil? || (dg.name == dg_2[0].discussionGroup.name)</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="96">
+        <li class="covered" data-hits="10" data-linenumber="98">
           <span class="hits">10</span>
           
           <code class="ruby">          dg_2 = array_2[1]</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="97">
+        <li class="never" data-hits="" data-linenumber="99">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="98">
+        <li class="never" data-hits="" data-linenumber="100">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="99">
+        <li class="never" data-hits="" data-linenumber="101">
           
           
           <code class="ruby">      # update dg_2 by reassigning to new dg</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="100">
+        <li class="covered" data-hits="12" data-linenumber="102">
           <span class="hits">12</span>
           
           <code class="ruby">      if !dg_2.nil?</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="101">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="9" data-linenumber="103">
+          <span class="hits">9</span>
           
           <code class="ruby">        dg_2.each do |mdg|</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="102">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="7" data-linenumber="104">
+          <span class="hits">7</span>
           
           <code class="ruby">          mdg.update_attributes(:discussionGroup =&gt; dg)</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="103">
-          
-          
-          <code class="ruby">        end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="104">
-          
-          
-          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="105">
           
           
+          <code class="ruby">        end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="106">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="107">
+          
+          
           <code class="ruby">      </code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="106">
+        <li class="covered" data-hits="12" data-linenumber="108">
           <span class="hits">12</span>
           
           <code class="ruby">      array_1.delete(dg_1)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="107">
+        <li class="covered" data-hits="12" data-linenumber="109">
           <span class="hits">12</span>
           
           <code class="ruby">      array_2.delete(dg_2)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="108">
+        <li class="never" data-hits="" data-linenumber="110">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="109">
+        <li class="never" data-hits="" data-linenumber="111">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="110">
+        <li class="never" data-hits="" data-linenumber="112">
           
           
           <code class="ruby">end</code>
@@ -1801,20 +1813,20 @@
           <code class="ruby">  scope :for_cg, -&gt;(cg) { where(cg: cellGroup) }</code>
         </li>
       
-        <li class="covered" data-hits="29" data-linenumber="17">
-          <span class="hits">29</span>
+        <li class="covered" data-hits="15" data-linenumber="17">
+          <span class="hits">15</span>
           
           <code class="ruby">  scope :for_leader, -&gt; { where(is_leader: true) }</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="18">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="3" data-linenumber="18">
+          <span class="hits">3</span>
           
           <code class="ruby">  scope :no_cg, -&gt; { where(cellGroup: nil) }</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="19">
-          <span class="hits">25</span>
+        <li class="covered" data-hits="13" data-linenumber="19">
+          <span class="hits">13</span>
           
           <code class="ruby">  scope :have_cg, -&gt; { where.not(cellGroup: nil) }</code>
         </li>

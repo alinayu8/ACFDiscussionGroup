@@ -48,10 +48,8 @@ group :development, :test do
   gem 'simplecov', '0.15.1'
   gem 'shoulda', '3.5.0'
   gem 'shoulda-matchers', '2.8.0'
-  gem 'minitest'
   gem 'minitest-rails', '3.0.0'
   gem 'minitest-reporters', '1.1.19'
-  gem 'test-unit'
   gem 'rails-controller-testing', '1.0.2'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
@@ -86,7 +84,3 @@ gem 'bcrypt'
 gem 'oauth2'
 gem 'figaro'
 gem 'best_in_place', '~> 3.0.1'
-gem 'sqlite3'
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

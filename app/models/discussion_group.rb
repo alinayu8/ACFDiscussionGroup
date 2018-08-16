@@ -28,6 +28,7 @@ class DiscussionGroup < ApplicationRecord
         MemberDg.create!(member: m, discussionGroup: @dg)
       end
     end
+    
     # assign the other members
     og_male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "male" }.shuffle
     og_female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "female" }.shuffle
