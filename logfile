@@ -1,0 +1,12 @@
+LOG:  could not translate host name "localhost", service "5432" to address: nodename nor servname provided, or not known
+WARNING:  could not create listen socket for "localhost"
+FATAL:  could not create any TCP/IP sockets
+LOG:  could not translate host name "localhost", service "5432" to address: nodename nor servname provided, or not known
+WARNING:  could not create listen socket for "localhost"
+FATAL:  could not create any TCP/IP sockets
+LOG:  could not translate host name "localhost", service "5432" to address: nodename nor servname provided, or not known
+WARNING:  could not create listen socket for "localhost"
+FATAL:  could not create any TCP/IP sockets
+LOG:  could not translate host name "localhost", service "5432" to address: nodename nor servname provided, or not known
+WARNING:  could not create listen socket for "localhost"
+FATAL:  could not create any TCP/IP sockets

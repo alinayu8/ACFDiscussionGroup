@@ -5,7 +5,7 @@ class Member < ApplicationRecord
   #attr_accessor :name, :cellGroup, :gender
 
   # Validations
-  validates_presence_of :name, :gender
+  validates_presence_of :name, :gender, :year
   validates_inclusion_of :gender, in: %w( male female ), message: "is not recognized in the system"
   validate :gender_matches_cg
   validate :cg_exists
@@ -17,6 +17,7 @@ class Member < ApplicationRecord
   scope :for_leader, -> { where(is_leader: true) }
   scope :no_cg, -> { where(cellGroup: nil) }
   scope :have_cg, -> { where.not(cellGroup: nil) }
+  scope :for_graduates, ->{ where(year > 4) }
 
   # Functions
   def gender_matches_cg
