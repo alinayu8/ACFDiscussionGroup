@@ -1,29 +1,8 @@
-<a
-id="logo"
-class="brand-logo left"
-style="background-image: url('<%= asset_path 'tep_logo-highres.png' %>')"
-href="/">
-</a>
-<nav id="nav">
-    <div class="container">
-        <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <% if logged_in? %>
-                <li><%= link_to 'Checkout', new_order_path, :class => current_class?(new_order_path) %></li>
-                <li><%= link_to 'POS Transactions', orders_path, :class => current_class?(orders_path)%></li>
-            <% if current_user.role=="admin" %>
-                
-                <li><%= link_to 'Items', items_path, :class => current_class?(items_path) %></li>
-                <li><%= link_to 'Sync to Salesforce', sync_path, :class => current_class?(sync_path) %></li>
-            <%end%>
-            <%end%>
-        </ul>
-    </div>
-    <ul class="right hide-on-med-and-down">
-        <% if logged_in? %>
-            <li id="username"><%= current_user.first_name %> <%= current_user.last_name %> (<%= current_user.role %>)</li>
-            <li><%= link_to 'Logout', logout_path %></li>
-        <% else %>
-            <li><%= link_to 'Login', login_path %></li>
-        <% end %>
+<nav id="nav" class="col s10">
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to 'Members', members_path, :class => current_class?(members_path) %></li>
+        <li><%= link_to 'Cell Groups', cell_groups_path, :class => current_class?(cell_groups_path)%></li>
+        <li><%= link_to 'Large Groups', large_groups_path, :class => current_class?(large_groups_path) %></li>
+        <li><i class="material-icons"><%= link_to('settings', settings_path)%></i></li>
     </ul>
 </nav>
