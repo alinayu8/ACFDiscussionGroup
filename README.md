@@ -15,6 +15,7 @@ git clone https://github.com/alinayu8/ACFDiscussionGroup.git
 Next, execute the following commands:
 ```
 bundle install
+rake db:setup
 rake db:migrate
 ```
 
