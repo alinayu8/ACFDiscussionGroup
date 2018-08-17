@@ -42,7 +42,9 @@
     text-align: right;
     color: #4F4F4F !important;
     font-size: 1.2rem;
-    line-height: 63px; //the height of the buttons on the navbar
+    line-height: 0px;
+    padding: 1.5rem;
+    //line-height: 63px; //the height of the buttons on the navbar
   }
 
   a {
@@ -50,13 +52,9 @@
   }
   
   .nav_active {
-    border-bottom: solid .3rem orange;
+    background-color:rgba(0, 0, 0, 0.1);
   }
 
-  // .material-icons {
-  //   line-height: 1 !important;
-  // }
-  
   /********** FLASH MSGS ********/
   #flash_notice, #flash_error, #flash_alert {
     padding: 5px 8px;

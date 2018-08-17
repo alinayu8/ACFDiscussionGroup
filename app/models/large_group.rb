@@ -10,4 +10,5 @@ class LargeGroup < ApplicationRecord
 
     # Scopes
     scope :for_semester, ->(sem) { where(semester: sem) }
+    scope :by_created, -> { order("created_at DESC") }
 end

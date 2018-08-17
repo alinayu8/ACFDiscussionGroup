@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: :login
 
   # custom routes
-  get 'settings', to: 'user#settings', as: 'settings'
+  get 'settings', to: 'users#settings', as: 'settings'
 end
