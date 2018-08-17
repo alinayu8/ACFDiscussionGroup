@@ -21,6 +21,7 @@ FactoryBot.define do
         name "Alina Yu"
         gender "female"
         is_leader true
+        year 4
     end
 
     factory :cellGroup do

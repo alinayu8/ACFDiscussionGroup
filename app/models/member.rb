@@ -32,30 +32,36 @@ class Member < ApplicationRecord
     end
   end
 
+  def self.add_one_year
+    Member.update_all("year = year + 1")
+  end
+
   # parse member text in order to create new members
+  # assumming members will be listed out as: Name, Year, Cell Group, Gender OR Name, Year, Cell Group OR Name, Year, Gender
   def self.member_list(new_members)
     create_members = []
     members = new_members.strip.split("\n")
     members.each do |m|
       m = m.split(",").map(&:strip).reject(&:empty?)
-      @name = m[0]
-      if m.size == 2
-       if %w[male female Male Female].include?(m[1])
-          @gender = m[1]
+      if m.size == 3
+       if %w[male female Male Female].include?(m[2])
+          @gender = m[2]
         else
-          @gender = CellGroup.find_by(name: m[1]).gender
-          @cg = CellGroup.find_by(name: m[1])
+          @gender = CellGroup.find_by(name: m[2]).gender
+          @cg = CellGroup.find_by(name: m[2])
         end
-      elsif m.size == 3
-        @cg = CellGroup.find_by(name: m[1])
+      elsif m.size == 4
+        @cg = CellGroup.find_by(name: m[2])
         if @cg == nil
           return "cell group name invalid"
         end
-        @gender = m[2]
+        @gender = m[3]
       else
-        return "must have either cell group or gender listed, and information must be in proper order"
+        return "must have either cell group or gender listed as well as year, and information must be in proper order"
       end
-      create_members.push(Member.new(:name => @name, :gender => @gender.downcase, :cellGroup => @cg))
+      @name = m[0]
+      @year = m[1]
+      create_members.push(Member.new(:name => @name, :year => @year, :gender => @gender.downcase, :cellGroup => @cg))
       @gender = nil # reset variables
       @cg = nil
     end
