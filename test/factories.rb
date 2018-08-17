@@ -2,7 +2,7 @@ FactoryBot.define do
     factory :largeGroup do
         date Date.current
         session_number 1
-        semester "Fall 2018"
+        semester "f18"
     end
 
     factory :discussionGroup do
