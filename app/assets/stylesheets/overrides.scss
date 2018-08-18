@@ -15,10 +15,10 @@
   
   /********** TOPBAR & NAV ********/
   
-  .row {
-    margin-left: 1.5rem !important;
-    margin-right: 1rem !important;
-    margin-top: 1rem;
+  .head {
+    margin-left: 2.5rem !important;
+    margin-right: 2.5rem !important;
+    margin-top: 2rem;
   }
 
   header {
@@ -35,15 +35,16 @@
   }
 
   h2 {
-    font-size: 1.8rem !important;
+    font-size: 3rem !important;
     font-family: 'Merriweather', sans-serif !important;
     margin: 0 !important;
+    color: #7a7874;
   }
   
   #nav {
     box-shadow: none !important;
     font-family: 'Raleway', sans-serif;
-    background-color: #f2efe9 !important;
+    background-color: transparent !important;
     padding-right: 10px;
   }
   
@@ -88,13 +89,10 @@
   }
   
   /********** BODY ********/
-  
-  blockquote {
-    border-color: orange !important;
-  }
-  
-  #content {
-    min-height: calc(100vh - 390px);
+
+  main {
+    position: relative;
+    bottom: 5.6rem;
   }
   
   /********** FOOTER ********/

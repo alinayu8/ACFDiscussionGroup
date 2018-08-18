@@ -63,7 +63,7 @@ class Member < ApplicationRecord
       @gender.capitalize!
       @name = m[0]
       @year = m[1]
-      create_members.push(Member.new(:name => @name, :year => @year, :gender => @gender, :cellGroup => @cg))
+      create_members.push(Member.new(:name => @name, :year => @year, :gender => @gender, :cellGroup => @cg, :is_leader => False, :is_active => True))
       @gender = nil # reset variables
       @cg = nil
     end
