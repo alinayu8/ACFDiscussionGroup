@@ -13,8 +13,8 @@ csv.each do |row|
     t = CellGroup.new
     t.name = row['Name']
     t.gender = row['Gender']
-    t.save
-    puts "cell group #{t.name} saved"
+    t.save!
+    puts "cell group #{t.name}, #{t.gender} saved"
   end
   
 puts "There are now #{CellGroup.count} rows in the cell group table"
@@ -23,14 +23,14 @@ csv_text = File.read(Rails.root.join('lib', 'seeds', 'largegroups.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
     t = LargeGroup.new
-    t.date = row['Date']
+    t.date = Date.parse(row['Date'])
     t.session_number = row['Session Number']
     t.semester = row['Semester']
-    t.save
+    t.save!
     puts "large group #{t.session_number}, #{t.semester} saved"
   end
   
-puts "There are now #{LargeGroup.count} rows in the cell group table"
+puts "There are now #{LargeGroup.count} rows in the large group table"
 
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'members.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
@@ -42,12 +42,11 @@ csv.each do |row|
     t.year = row['Year']
     cell_group = CellGroup.where(name: row['Cell Group']).first
     if (!cell_group.nil?)
-        t.cell_group_id = CellGroup.where(name: row['Cell Group']).first.id
-      t.save
+        t.cellGroup_id = CellGroup.where(name: row['Cell Group']).first.id
     end
     t.is_active = row['Is_Active']
-    t.save
-    puts "member #{t.name} saved"
+    t.save!
+    puts "member #{t.name}, #{t.gender}, #{t.is_leader}, #{t.year}, #{t.is_active} saved"
   end
   
-puts "There are now #{Member.count} rows in the cell group table"
+puts "There are now #{Member.count} rows in the members table"

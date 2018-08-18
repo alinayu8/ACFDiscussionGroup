@@ -30,8 +30,8 @@ class DiscussionGroup < ApplicationRecord
     end
     
     # assign the other members
-    og_male_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "male" }.shuffle
-    og_female_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "female" }.shuffle
+    og_male_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "Male" }.shuffle
+    og_female_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "Female" }.shuffle
     male_dgs = og_male_dgs
     female_dgs = og_male_dgs
     other_members = Member.all.no_cg

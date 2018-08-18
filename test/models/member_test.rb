@@ -19,7 +19,7 @@ class MemberTest < ActiveSupport::TestCase
       
         should "parse through text of names" do
             text = """
-            Christian, 2, Beacon, male
+            Christian, 2, Beacon, Male
             Hanna, 3, Kindle
             Nick, 1, male
             

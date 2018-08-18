@@ -4,11 +4,11 @@ module Contexts
   
       def create_cgs
         @kindle = FactoryBot.create(:cellGroup)
-        @encounter = FactoryBot.create(:cellGroup, name: "Encounter", gender: "female")
-        @haven = FactoryBot.create(:cellGroup, name: "Haven", gender: "female")
-        @axial = FactoryBot.create(:cellGroup, name: "Axial", gender: "male")
-        @delta = FactoryBot.create(:cellGroup, name: "Delta", gender: "male")
-        @beacon = FactoryBot.create(:cellGroup, name: "Beacon", gender: "male")
+        @encounter = FactoryBot.create(:cellGroup, name: "Encounter", gender: "Female")
+        @haven = FactoryBot.create(:cellGroup, name: "Haven", gender: "Female")
+        @axial = FactoryBot.create(:cellGroup, name: "Axial", gender: "Male")
+        @delta = FactoryBot.create(:cellGroup, name: "Delta", gender: "Male")
+        @beacon = FactoryBot.create(:cellGroup, name: "Beacon", gender: "Male")
       end
   
       def destroy_cgs

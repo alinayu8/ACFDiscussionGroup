@@ -1,1 +1,33 @@
-cell groups
+<div class="card">
+    <div class="card-content">
+        <h1>Cell Groups</h1>
+
+        <table class="highlight">
+        <thead>
+            <tr>
+            <th>Group Name</th>
+            <th>Leader</th>
+            <th>Gender</th>
+            <th colspan="2"></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @cell_groups.each do |cell_group| %>
+            <tr>
+                <td><%= link_to cell_group.name, cell_group_path(cell_group) %></td>
+                <td><%= link_to @leaders.select{ |m| m.cellGroup.name == cell_group.name}.first.name, member_path(@leaders.select{ |m| m.cellGroup.name == cell_group.name}.first) %></td>
+                <td><%= cell_group.gender %></td>
+                <td><i class="material-icons"><%= link_to('edit', edit_cell_group_path(cell_group))%></i></td>
+                <td><%= link_to(cell_group_path(cell_group), method: :delete, data: {confirm: 'Are you sure you wish to delete this cell_group?'}) do %>
+                    <i class="material-icons">delete</i>
+                <% end %></td>
+            </tr>
+            <% end %>
+            <%= will_paginate @teachers %>
+        </tbody>
+        </table>
+
+        <br>
+    </div>
+</div>

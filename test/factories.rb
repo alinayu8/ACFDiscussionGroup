@@ -19,7 +19,7 @@ FactoryBot.define do
     factory :member do
         association :cellGroup
         name "Alina Yu"
-        gender "female"
+        gender "Female"
         is_active true
         is_leader true
         year 4
@@ -27,6 +27,6 @@ FactoryBot.define do
 
     factory :cellGroup do
         name "Kindle"
-        gender "female"
+        gender "Female"
     end
 end
