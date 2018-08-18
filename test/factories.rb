@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :user do
+    password_digest "MyString"
+    first_name "MyString"
+    last_name "MyString"
+    email "MyString"
+    role "MyString"
+    active false
+  end
     factory :largeGroup do
         date Date.current
         session_number 1
