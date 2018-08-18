@@ -8,4 +8,6 @@ class CellGroup < ApplicationRecord
     # Scopes
     scope :for_gender, ->(gender) { where(gender: gender) }
     scope :alphabetical, -> { order("name") }
+
+    GENDER_TYPES = ["Male", "Female"]
 end

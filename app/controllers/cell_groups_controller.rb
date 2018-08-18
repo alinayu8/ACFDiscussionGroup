@@ -45,7 +45,7 @@ class CellGroupsController < ApplicationController
 	end
 
 	private
-		def set_order
+		def set_cell_group
 			@cell_group = CellGroup.find(params[:id])
 		end
 
