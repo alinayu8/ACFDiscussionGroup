@@ -4,7 +4,7 @@ module Contexts
   
       def create_lgs
         @lg1 = FactoryBot.create(:largeGroup)
-        @lg2 = FactoryBot.create(:largeGroup, date: Date.current - 7, semester: "f18", session_number: "2")
+        @lg2 = FactoryBot.create(:largeGroup, date: Date.current - 7, semester: "F18", session_number: "2")
         @lg3 = FactoryBot.create(:largeGroup, date: Date.current - 14, semester: "f18", session_number: "3")
       end
   

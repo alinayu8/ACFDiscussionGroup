@@ -18,6 +18,7 @@ class Member < ApplicationRecord
   scope :no_cg, -> { where(cellGroup: nil) }
   scope :have_cg, -> { where.not(cellGroup: nil) }
   scope :for_graduates, ->{ where(year > 4) }
+  scope :active, ->{ where(is_active: true) }
 
   # Functions
   def gender_matches_cg

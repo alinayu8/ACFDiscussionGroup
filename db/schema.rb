@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180723044416) do
     t.string "name"
     t.string "gender"
     t.boolean "is_leader"
+    t.boolean "is_active"
     t.integer "year"
     t.integer "cellGroup_id"
     t.datetime "created_at", null: false

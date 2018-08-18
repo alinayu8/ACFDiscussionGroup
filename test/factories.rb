@@ -20,6 +20,7 @@ FactoryBot.define do
         association :cellGroup
         name "Alina Yu"
         gender "female"
+        is_active true
         is_leader true
         year 4
     end
