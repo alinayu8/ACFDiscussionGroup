@@ -1,6 +1,6 @@
-<div class="card">
-    <div class="card-content">
-        <h1>Cell Groups</h1>
+<!-- <div class="card"> -->
+<!-- <div class="card-content"> -->
+        <h2>Cell Groups</h2>
 
         <table class="highlight">
         <thead>
@@ -25,9 +25,14 @@
             </tr>
             <% end %>
             <%= will_paginate @teachers %>
+            <tr>
+                
+            </tr>
         </tbody>
-        </table>
 
+        </table>
         <br>
-    </div>
-</div>
+        <i class="material-icons"><%= link_to('add_circle', new_cell_group_path) %></i>
+        <br>
+<!--     </div> -->
+<!-- </div> -->
