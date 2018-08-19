@@ -9,6 +9,15 @@
         null,
         null
       ],
+      "/Users/AlinaYu/Documents/ACFDiscussionGroup/app/models/user.rb": [
+        1,
+        null
+      ],
+      "/Users/AlinaYu/Documents/ACFDiscussionGroup/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
       "/Users/AlinaYu/Documents/ACFDiscussionGroup/app/models/cell_group.rb": [
         1,
         1,
@@ -20,10 +29,7 @@
         null,
         1,
         1,
-        null
-      ],
-      "/Users/AlinaYu/Documents/ACFDiscussionGroup/app/models/application_record.rb": [
-        1,
+        null,
         1,
         null
       ],
@@ -90,7 +96,6 @@
         null,
         1,
         null,
-        3,
         3,
         3,
         3,
@@ -219,13 +224,13 @@
         null,
         null,
         12,
-        8,
+        10,
         null,
         null,
         null,
         12,
-        8,
-        6,
+        9,
+        7,
         null,
         null,
         null,
@@ -460,7 +465,7 @@
         0
       ]
     },
-    "timestamp": 1534557938
+    "timestamp": 1534636293
   },
   "Unit Tests": {
     "coverage": {
