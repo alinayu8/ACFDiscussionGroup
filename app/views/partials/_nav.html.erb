@@ -1,0 +1,8 @@
+<nav id="nav" class="col s10">
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%= link_to 'Members', members_path, :class => current_class?(members_path) %></li>
+        <li><%= link_to 'Cell Groups', cell_groups_path, :class => current_class?(cell_groups_path)%></li>
+        <li><%= link_to 'Large Groups', large_groups_path, :class => current_class?(large_groups_path) %></li>
+        <li><i class="material-icons"><%= link_to('settings', settings_path, :class => current_class?(settings_path)) %></i></li>
+    </ul>
+</nav>

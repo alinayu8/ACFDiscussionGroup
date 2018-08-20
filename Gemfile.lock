@@ -276,6 +276,9 @@ GEM
     time_date_helpers (0.0.2)
       chronic
     timeliness (0.3.8)
+    turbolinks (5.1.1)
+      turbolinks-source (~> 5.1)
+    turbolinks-source (5.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.1.2)
@@ -343,6 +346,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   time_date_helpers (= 0.0.2)
+  turbolinks (~> 5)
   uglifier (= 4.1.2)
   validates_timeliness (= 4.0.2)
   web-console (>= 3.3.0)

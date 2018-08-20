@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ACFDiscussionGroup</title>
+    <title>Asian Christian Fellowship</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag 'application', media: 'all' %>    
   </head>
-
   <body>
-    <%= yield %>
+  <div class="head row">
+    <header>
+        <%= render :partial => "partials/acf-login" %>
+        <%= render :partial => "partials/nav" %>
+    </header>
+  </div>
+    <main>
+    <div id="content" class="row">
+      <div class="col s9 offset-s2">
+
+        <%= render :partial => "partials/flash" %>
+        <%= yield %>
+
+      </div>
+    </div>
+  </main>
+
   </body>
+  <%= render :partial => "partials/footer" %>
 </html>

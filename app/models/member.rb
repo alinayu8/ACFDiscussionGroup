@@ -6,7 +6,7 @@ class Member < ApplicationRecord
 
   # Validations
   validates_presence_of :name, :gender, :year
-  validates_inclusion_of :gender, in: %w( male female ), message: "is not recognized in the system"
+  validates_inclusion_of :gender, in: %w(  Male Female ), message: "is not recognized in the system"
   validate :gender_matches_cg
   validate :cg_exists
 
@@ -18,6 +18,7 @@ class Member < ApplicationRecord
   scope :no_cg, -> { where(cellGroup: nil) }
   scope :have_cg, -> { where.not(cellGroup: nil) }
   scope :for_graduates, ->{ where(year > 4) }
+  scope :active, ->{ where(is_active: true) }
 
   # Functions
   def gender_matches_cg
@@ -55,13 +56,14 @@ class Member < ApplicationRecord
         if @cg == nil
           return "cell group name invalid"
         end
-        @gender = m[3]
+          @gender = m[3]
       else
         return "must have either cell group or gender listed as well as year, and information must be in proper order"
       end
+      @gender.capitalize!
       @name = m[0]
       @year = m[1]
-      create_members.push(Member.new(:name => @name, :year => @year, :gender => @gender.downcase, :cellGroup => @cg))
+      create_members.push(Member.new(:name => @name, :year => @year, :gender => @gender, :cellGroup => @cg, :is_leader => False, :is_active => True))
       @gender = nil # reset variables
       @cg = nil
     end

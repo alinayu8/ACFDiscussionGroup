@@ -21,17 +21,17 @@ class DiscussionGroup < ApplicationRecord
   # initialize the discussion groups per cell group; distribute the unassociated members to appropriate dgs
   def self.initialize_dgs(large_group)
     # create dgs
-    Member.all.for_leader.each do |m|
+    Member.all.active.for_leader.each do |m|
       @dg = DiscussionGroup.create!(name: m.name, largeGroup: large_group)
       # have to do this ugly call because cellGroup is optional
-      Member.all.have_cg.select{ |mem| mem.cellGroup.name == m.cellGroup.name}.each do |m|
+      Member.all.active.have_cg.select{ |mem| mem.cellGroup.name == m.cellGroup.name}.each do |m|
         MemberDg.create!(member: m, discussionGroup: @dg)
       end
     end
     
     # assign the other members
-    og_male_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "male" }.shuffle
-    og_female_dgs = DiscussionGroup.all.select { |dg| Member.find_by(name: dg.name).gender == "female" }.shuffle
+    og_male_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "Male" }.shuffle
+    og_female_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "Female" }.shuffle
     male_dgs = og_male_dgs
     female_dgs = og_male_dgs
     other_members = Member.all.no_cg
