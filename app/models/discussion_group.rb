@@ -18,38 +18,52 @@ class DiscussionGroup < ApplicationRecord
     end
   end
 
-  # initialize the discussion groups per cell group; distribute the unassociated members to appropriate dgs
-  def self.initialize_dgs(large_group)
-    # create dgs
-    Member.all.active.for_leader.each do |m|
-      @dg = DiscussionGroup.create!(name: m.name, largeGroup: large_group)
-      # have to do this ugly call because cellGroup is optional
-      Member.all.active.have_cg.select{ |mem| mem.cellGroup.name == m.cellGroup.name}.each do |m|
-        MemberDg.create!(member: m, discussionGroup: @dg)
+  def leader
+    return Member.for_leader.where(name: self.name).first
+  end
+
+  def gender
+    return Member.for_leader.where(name: self.name).first.gender
+  end
+
+  # find the dg that has the least number of members
+  def self.least_members(large_group, gender)
+    least_members = nil
+    dg = nil
+    Member.for_leader.for_gender(gender).each do |mem|
+      # members at the large group in a specific discussion group
+      members = MemberDg.select {|mdg| (mdg.discussionGroup.name == mem.name) && (mdg.discussionGroup.largeGroup == large_group)}
+      if least_members.nil? || members.count < least_members.count
+        least_members = members
+        dg = members.first.discussionGroup
       end
     end
+    return dg
+  end
+
+  # initialize the discussion groups per cell group; distribute the unassociated members to appropriate dgs
+  def self.initialize_dgs(large_group)
+    # create dgs if don't exist
+      Member.all.active.for_leader.each do |m|
+        if DiscussionGroup.where(largeGroup: large_group).where(name: m.name).empty?
+          @dg = DiscussionGroup.create!(name: m.name, largeGroup: large_group, randomized: false)
+        else
+          @dg = DiscussionGroup.where(largeGroup: large_group).where(name: m.name).first
+        end
+        # have to do this ugly call because cellGroup is optional
+        Member.all.active.have_cg.select{ |mem| mem.cellGroup.name == m.cellGroup.name}.each do |m|
+          MemberDg.create!(member: m, discussionGroup: @dg)
+        end
+      end  
     
     # assign the other members
-    og_male_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "Male" }.shuffle
-    og_female_dgs = DiscussionGroup.all.select { |dg| Member.active.find_by(name: dg.name).gender == "Female" }.shuffle
-    male_dgs = og_male_dgs
-    female_dgs = og_male_dgs
-    other_members = Member.all.no_cg
+    other_members = Member.all.active.no_cg
     other_members.each do |m|
-      # "restock" dgs to assign
-      if male_dgs.empty?
-        male_dgs = og_male_dgs
-      elsif female_dgs.empty?
-        female_dgs = og_female_dgs
-      end
-
       # assign by gender
-      if m.gender == "male"
-        @dg = male_dgs.first
-        male_dgs.delete(male_dgs.first)
+      if m.gender == "Male"
+        @dg = DiscussionGroup.least_members(large_group, "Male")
       else 
-        @dg = female_dgs.first
-        female_dgs.delete(female_dgs.first)
+        @dg = DiscussionGroup.least_members(large_group, "Female")
       end
       MemberDg.create!(member: m, discussionGroup: @dg)
     end
@@ -61,13 +75,9 @@ class DiscussionGroup < ApplicationRecord
     array_2 = []
 
     # if not the first time randomizing dgs
-    test_dg = DiscussionGroup.all.where(largeGroup: large_group).first    
-    test_mdg = MemberDg.where(discussionGroup: test_dg).first
-    if test_mdg.updated_at != test_mdg.created_at
-      del_mdgs = MemberDg.all.select { |mdg| mdg.discussionGroup.largeGroup == large_group}
-      del_dgs = DiscussionGroup.all.where(largeGroup: large_group)
-      MemberDg.delete(del_mdgs)
-      DiscussionGroup.delete(del_dgs)
+    test_dg = DiscussionGroup.where(largeGroup: large_group).first
+    if test_dg.randomized
+      MemberDg.delete_all
       DiscussionGroup.initialize_dgs(large_group)
     end
 
@@ -75,6 +85,7 @@ class DiscussionGroup < ApplicationRecord
 
     # shuffle each initial discussion group (cell group) and split into 2 halves
     dgs.each do |dg|
+      dg.update_attributes(:randomized => true)
       dg_members = MemberDg.where(discussionGroup: dg).select { |mdg| mdg.member.is_leader == false}.shuffle # individual mdgs 
       leader = MemberDg.where(discussionGroup: dg).select { |mdg| mdg.member.is_leader == true}
       dg_members.unshift(leader)
