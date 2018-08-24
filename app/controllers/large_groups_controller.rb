@@ -1,7 +1,8 @@
 class LargeGroupsController < ApplicationController
 	before_action :set_large_group, only: [:show, :edit, :update, :destroy, :shuffle]
 	def index
-		@large_group = LargeGroup.all.by_created
+		#@large_group = LargeGroup.all.by_created
+		@large_group = LargeGroup.all
 	end 
 
 	def new
