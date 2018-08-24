@@ -17,7 +17,7 @@ class Member < ApplicationRecord
   scope :for_leader, -> { where(is_leader: true) }
   scope :no_cg, -> { where(cellGroup: nil) }
   scope :have_cg, -> { where.not(cellGroup: nil) }
-  scope :for_graduates, ->{ where(year > 4) }
+  scope :for_graduates, ->{ where("year > ?", 4) }
   scope :active, ->{ where(is_active: true) }
 
   # Functions
@@ -63,8 +63,7 @@ class Member < ApplicationRecord
       @gender.capitalize!
       @name = m[0]
       @year = m[1]
-      create_members.push(Member.new(:name => @name, :year => @year, :gender => @gender, :cellGroup => @cg, :is_leader => False, :is_active => True))
-      @gender = nil # reset variables
+      create_members.push(Member.new(:name => @name, :year => @year, :gender => @gender, :cellGroup => @cg, :is_leader => false, :is_active => true))
       @cg = nil
     end
     create_members.map {|member| member.save! } 
