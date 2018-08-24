@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180818055334) do
 
   create_table "discussion_groups", force: :cascade do |t|
     t.string "name"
+    t.boolean "randomized"
     t.integer "largeGroup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

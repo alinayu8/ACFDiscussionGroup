@@ -18,7 +18,7 @@
     <% @cell_groups.each do |cell_group| %>
     <tr>
         <td><%= link_to cell_group.name, cell_group_path(cell_group) %></td>
-        <td><%= link_to @leaders.select{ |m| m.cellGroup.name == cell_group.name}.first.name, member_path(@leaders.select{ |m| m.cellGroup.name == cell_group.name}.first) %></td>
+        <td><%= link_to cell_group.leader.name, member_path(cell_group.leader) %></td>
         <td><%= cell_group.gender %></td>
         <td><i class="material-icons"><%= link_to('edit', edit_cell_group_path(cell_group))%></i></td>
         <td><%= link_to(cell_group_path(cell_group), method: :delete, data: {confirm: 'Are you sure you wish to delete this cell_group?'}) do %>
