@@ -104,6 +104,34 @@
     right: 4.7rem;
   }
 
+  /********** OVERLAY ********/
+
+  #overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.25); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+#overlay_box {
+  position: absolute;
+  height: 400px;
+  width: 600px;
+  margin: 0 auto;
+  left: 50%;
+  top: 50%; 
+  margin-left: -300px; /* half the width */
+  margin-top: -200px; /* half the height */
+  background-color: rgba(255,255,255,.75);
+}
+
   /********** FOOTER ********/
   
   footer.page-footer {
