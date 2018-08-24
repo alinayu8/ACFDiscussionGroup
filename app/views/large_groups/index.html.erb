@@ -1,1 +1,34 @@
-large groups
+<div class="row">
+    <h2 class="col s6">large groups</h2>
+    <i class="add right medium material-icons"><%= link_to('add_circle', new_cell_group_path) %></i>
+    <br><br>
+</div>
+
+
+
+<table>
+  
+  <tbody>
+    <% @large_group.each_with_index do |large_group, index| %>
+        <tr class="borderless">
+            <% if index == 0 || large_group.semester != @large_group[index - 1].semester %>
+                <td class="test_font"> <%= large_group.semester %> </td>
+                <% else %>
+                <td></td>
+            <% end %>
+               
+            
+            <td class="nicer"> <%= link_to "large group " + large_group.session_number.to_s, large_group_path(large_group)%> </td>
+            <td class="nicer2"> <%= large_group.date.strftime("%m/%d")%></td>
+
+          <td><i class="material-icons"><%= link_to('edit', large_group_path(large_group))%></i></td>
+          <td><%= link_to(large_group_path(large_group), method: :delete, data: {confirm: 'Are you sure you wish to delete this cell_group?'}) do %>
+                <i class="material-icons">delete</i>
+            <% end %></td>
+
+        </tr>
+  </tbody>
+    <% end %>
+  <tfoot>
+  </tfoot>
+</table>

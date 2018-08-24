@@ -1,7 +1,8 @@
 class LargeGroupsController < ApplicationController
 
 	def index
-		@large_group = LargeGroup.all.by_created
+		#@large_group = LargeGroup.all.by_created
+		@large_group = LargeGroup.all
 	end 
 
 	def new
