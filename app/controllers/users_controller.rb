@@ -14,11 +14,12 @@ class UsersController < ApplicationController
 
 	def edit
 		@user.role = "volunteer" if current_user.role?(:volunteer)
+		@user.role = "admin" if current_user.role(:admin)
 	end
 
 	def create
 		@user = User.new(user_params)
-		@user.role = "volunteer" if current_user.role?(:volunteer)
+		render action: 'edit'
 		if @user.save
 			flash[:notice] = "Successfully added #{@user.name} as a user"
 			redirect_to users_path
