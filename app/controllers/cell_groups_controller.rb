@@ -11,6 +11,10 @@ class CellGroupsController < ApplicationController
 	end
 
 	def edit
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def new
@@ -39,15 +43,17 @@ class CellGroupsController < ApplicationController
 			flash[:notice] = "Successfully updated #{@cell_group.name}."
 			redirect_to @cell_group
 		else
-			render action: 'edit'
+			flash[:error] = "Error in editing #{@cell_group.name}"
+			redirect_to cell_groups_path
 		end
 	end
 
 	def destroy 
 		if @cell_group.destroy
-			redirect_to cell_groups_url, notice: "Successfully removed Cell Group #{@cell_group.id}."
+			redirect_to cell_groups_url, notice: "Successfully removed Cell Group #{@cell_group.name}."
 		else
-			render action: 'show'
+			flash[:error] = "Error in deleting #{@cell_group.name}"
+			redirect_to cell_groups_path
 		end
 	end
 
