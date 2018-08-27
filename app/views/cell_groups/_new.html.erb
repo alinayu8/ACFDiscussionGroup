@@ -2,7 +2,7 @@
     <i class="close right material-icons">close</i>
     <h3>create a cell group</h3><br>
 
-    <%= simple_form_for(CellGroup.new) do |f| %>
+    <%= simple_form_for(@cell_group) do |f| %>
         <!-- No longer works because using jquery <%= f.error_notification %> -->
         <div class="row">
             <div class="form-inputs">
