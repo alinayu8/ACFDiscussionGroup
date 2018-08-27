@@ -48,6 +48,14 @@
     color: #7a7874;
   }
 
+  h4 {
+    font-size: 1rem !important;
+    font-family: 'Raleway', sans-serif !important;
+    margin: 0 !important;
+    color: black;
+  }
+
+
   #acf-logo:hover {
     background-color:rgba(0, 0, 0, 0.1);
   }
@@ -211,7 +219,7 @@ abbr[title] {
   
   table {
     font-family: 'Raleway', sans-serif;
-    
+    table-layout: fixed;
 
   }
 

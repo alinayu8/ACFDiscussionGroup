@@ -1,6 +1,11 @@
 <div class="row">
     <h2 class="col s6">large group <%=@large_group.session_number%></h2>
-    <i class="add right medium material-icons"><%= link_to('shuffle', shuffle_path) %></i>
+    <i class="add right medium material-icons">   
+        <%= link_to('shuffle', shuffle_path) %>
+    </i>
+    <div class="add nicer right ">
+        <%= @large_group.date.strftime("%m/%d") %>
+    </div>
     <br><br>
 </div>
 
@@ -8,7 +13,8 @@
     <table class="highlight">
         <thead>
             <tr>
-                <th colspan="3"><h3><%= dg.name %>'s Discussion Group</h3></th>
+                <th colspan="3"><%= dg.name %>'s Discussion Group</th>
+                <th>Attendance</th>
             </tr>
         </thead>
         <tbody>
@@ -17,6 +23,7 @@
                 <td><%= link_to dg.leader.name, member_path(dg.leader) %></td>
                 <td><%= link_to dg.leader.cellGroup.name, cell_group_path(dg.leader.cellGroup) %></td>
                 <td><%= dg.leader.truncate_gender %></td>
+                <td><%= best_in_place MemberDg.where(member: dg.leader).first, :attended, as: :checkbox, :collection => {false: "<i class='material-icons'>check_box_outline_blank</i>".html_safe, true: "<i class='material-icons'>check_box</i>".html_safe} %></td>
             </tr>
             <!-- Members' row -->
             <% MemberDg.where.not(member: dg.leader).select{|m| m.discussionGroup == dg}.each do |mdg| %>
@@ -28,10 +35,13 @@
                         <td><%= link_to mdg.member.cellGroup.name, cell_group_path(mdg.member.cellGroup) %></td>
                     <% end %>
                     <td><%= mdg.member.truncate_gender %></td>
+                    <td><%= best_in_place mdg, :attended, as: :checkbox, :collection => {false: "<i class='material-icons'>check_box_outline_blank</i>".html_safe, true: "<i class='material-icons'>check_box</i>".html_safe} %></td>
                 </tr>
             <% end %>
         </tbody>
     </table>
+    <br>
+    <br>
 <% end %>
 <br>
 <br>
