@@ -14,6 +14,10 @@ class CellGroupsController < ApplicationController
 	end
 
 	def new
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def show
@@ -21,7 +25,7 @@ class CellGroupsController < ApplicationController
 	
 	def create
 		@cell_group = CellGroup.new(cell_group_params)
-		if @cell_group.save!
+		if @cell_group.save
 			redirect_to cell_groups_path, notice: "Successfully added #{@cell_group.name} as a cell group."
 		else
 			flash[:error] = "Error in creating Cell Group"
@@ -52,7 +56,6 @@ class CellGroupsController < ApplicationController
 		end
 
 		def cell_group_params
-			#params.require(:cell_group).permit(:name, :gender)
-			params.permit(:name, :gender)
+			params.require(:cell_group).permit(:name, :gender)
 		end
 end
