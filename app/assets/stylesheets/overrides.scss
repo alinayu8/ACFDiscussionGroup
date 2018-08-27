@@ -114,8 +114,7 @@
 
   /********** OVERLAY ********/
 
-#overlay_box {
-  display: none; /* Hidden by default */
+.modal-content {
   position: absolute;
   height: 600px;
   width: 800px;
