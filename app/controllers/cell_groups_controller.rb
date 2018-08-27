@@ -14,6 +14,7 @@ class CellGroupsController < ApplicationController
 	end
 
 	def new
+		@cell_group = CellGroup.new
 		respond_to do |format|
 			format.html
 			format.js
