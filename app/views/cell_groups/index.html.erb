@@ -1,6 +1,6 @@
 <div class="row">
     <h2 class="col s6">cell groups</h2>
-    <div id="create_cg_button"><i class="add right medium material-icons">add_circle</i></div>
+    <div id="create_cg_button"><i class="add right medium material-icons"><%= link_to('add_circle', new_cell_group_path, remote: true) %></i></div>
     <br><br>
 </div>
 
@@ -18,7 +18,13 @@
     <% @cell_groups.each do |cell_group| %>
     <tr>
         <td><%= link_to cell_group.name, cell_group_path(cell_group) %></td>
-        <td><%= link_to cell_group.leader.name, member_path(cell_group.leader) %></td>
+        <td>
+            <% if cell_group.leader.nil? %>
+                No Leader
+            <% else %>
+                <%= link_to cell_group.leader.name, member_path(cell_group.leader) %>
+            <% end %>
+        </td>
         <td><%= cell_group.gender %></td>
         <td><i class="material-icons"><%= link_to('edit', edit_cell_group_path(cell_group))%></i></td>
         <td><%= link_to(cell_group_path(cell_group), method: :delete, data: {confirm: 'Are you sure you wish to delete this cell_group?'}) do %>
@@ -26,7 +32,6 @@
         <% end %></td>
     </tr>
     <% end %>
-    <%= will_paginate @teachers %>
     <tr>
         
     </tr>
@@ -37,6 +42,7 @@
 <br>
 
 <!-- Overlay effect -->
-<div id="overlay">
-    <div id="overlay_box"></div>
+<div id="overlay_box">
+    <i class="close right material-icons">close</i>
+    <%= render "form" %>
 </div>

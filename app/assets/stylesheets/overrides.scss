@@ -41,6 +41,13 @@
     color: #7a7874;
   }
 
+  h3 {
+    font-size: 1.5rem !important;
+    font-family: 'Merriweather', sans-serif !important;
+    margin: 0 !important;
+    color: #7a7874;
+  }
+
   #acf-logo:hover {
     background-color:rgba(0, 0, 0, 0.1);
   }
@@ -100,36 +107,35 @@
   }
   
   .add {
+    cursor: pointer;
     position: relative;
     right: 4.7rem;
   }
 
   /********** OVERLAY ********/
 
-  #overlay {
-    position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255,255,255,0.25); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-    cursor: pointer; /* Add a pointer on hover */
-}
-
 #overlay_box {
+  display: none; /* Hidden by default */
   position: absolute;
-  height: 400px;
-  width: 600px;
+  height: 600px;
+  width: 800px;
   margin: 0 auto;
   left: 50%;
   top: 50%; 
-  margin-left: -300px; /* half the width */
-  margin-top: -200px; /* half the height */
-  background-color: rgba(255,255,255,.75);
+  margin-left: -400px; /* half the width */
+  margin-top: -300px; /* half the height */
+  background-color: rgba(255,255,255,.90);
+  padding: 30px;
+}
+
+.string {
+  color: black;
+  font-size: 1rem;
+}
+
+abbr[title] {
+  border-bottom: 0px !important;
+  text-decoration: none !important;
 }
 
   /********** FOOTER ********/
@@ -276,13 +282,14 @@
   /********** BUTTONS ********/
   
   .btn {
-    background-color: #0075c5 !important;
+    font-family: 'Raleway';
+    background-color: #7a7874 !important;
     color: #000;
   }
   
   .btn:hover {
-    background-color: #ffff00;
-    color: #000;
+    background-color: black;
+    color: white;
   }
   
   .btn-secondary {
@@ -305,85 +312,27 @@
   }
   
   /********** FORMS ********/
-  .switch label input[type=checkbox]:checked+.lever:after {
-      background-color: #0075c5 !important;
-  }
-  .switch label input[type=checkbox]:checked+.lever {
-      background-color: #649DC5 !important;
-  }
   
-  #edit_order {
-    display: in-line block;
+  label {
+    font-family: 'Raleway', sans-serif !important;
+    color: black !important;
+    font-size: 1rem !important;
   }
-  
-  #delete_order {
-    display: in-line block;
+
+  .close {
+    cursor: pointer;
   }
-  
-  input:focus {
-    border-bottom: 1px solid #0075c5 !important;
-    box-shadow: 0 1px 0 0 #0075c5 !important
+
+  input[type=text]:focus {
+    border-bottom: 1px solid #000 !important;
+    box-shadow: 0 1px 0 0 #000 !important;
   }
-  
-  ul.dropdown-content.select-dropdown li span {
-      color: black;
-  }
-  
-  /* label focus color */
-  .input-field input:focus + label {
-    color: #0075c5 !important;
-  }
-  
-  /* label underline focus color */
-  .row .input-field input:focus {
-    border-bottom: 1px solid #0075c5 !important;
-    box-shadow: 0 1px 0 0 #0075c5 !important
-  }
-  
-  .switch label input[type=checkbox]:checked + .lever {
-    background-color: #ffea00;
-  }
-  
-  .switch label input[type=checkbox]:checked + .lever::after {
-    background-color: #ffd600;
-  }
-  
-  .picker__date-display {
-    background-color: #ffd600;
-    color: #000;
-  }
-  
-  .picker__year-display {
-    color: #000;
-  }
-  
-  input[type=text].search {
-    border-bottom: none;
-    margin-left: 10px;
-  }
-  
-  .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
-    border-radius: 50%;
-    transform: scale(0.9);
-    background-color: #ffd600;
-    color: #000;
-  }
-  
-  .check_boxes.optional.filled-in {
-    background-color: #ffd600;
-  }
-  
-  [type="checkbox"].filled-in:checked+label:after {
-    border: 2px solid #ffd600;
-    background-color: #ffd600;
-  }
-  
+
   [type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
-    border: 2px solid #ffd600;
-    background-color: #ffd600;
+    background-color: black !important;
+    border: gray !important;
   }
-  
-  
+
   /********** MEDIA ********/
   .img_left {
     float: left;
