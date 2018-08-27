@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   # custom routes
   get 'settings', to: 'users#settings', as: 'settings'
+  get 'large_groups/:id/shuffle', to: 'large_groups#shuffle', as: 'shuffle'
 end

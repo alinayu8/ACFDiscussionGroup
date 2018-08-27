@@ -9,5 +9,8 @@ class CellGroup < ApplicationRecord
     scope :for_gender, ->(gender) { where(gender: gender) }
     scope :alphabetical, -> { order("name") }
 
-    GENDER_TYPES = ["Male", "Female"]
+    # Functions
+    def leader 
+        return Member.for_leader.select{ |m| m.cellGroup.name == self.name}.first
+    end
 end

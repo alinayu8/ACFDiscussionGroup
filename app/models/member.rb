@@ -21,6 +21,14 @@ class Member < ApplicationRecord
   scope :active, ->{ where(is_active: true) }
 
   # Functions
+  def truncate_gender
+    if self.gender == "Male"
+      return "M"
+    else
+      return "F"
+    end
+  end
+
   def gender_matches_cg
     if self.cellGroup != nil 
       self.gender == self.cellGroup.gender

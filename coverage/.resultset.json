@@ -162,8 +162,6 @@
         14,
         2,
         2,
-        2,
-        2,
         null,
         4,
         0,
@@ -174,9 +172,7 @@
         null,
         4,
         0,
-        0,
         null,
-        4,
         4,
         null,
         4,
@@ -213,8 +209,8 @@
         12,
         null,
         null,
-        2,
-        0,
+        3,
+        1,
         null,
         null,
         null,
@@ -229,8 +225,8 @@
         null,
         null,
         12,
-        9,
-        7,
+        8,
+        6,
         null,
         null,
         null,
@@ -465,7 +461,7 @@
         0
       ]
     },
-    "timestamp": 1534636293
+    "timestamp": 1534639016
   },
   "Unit Tests": {
     "coverage": {

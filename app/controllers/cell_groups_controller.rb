@@ -2,15 +2,18 @@ class CellGroupsController < ApplicationController
 	before_action :set_cell_group, only: [:show, :edit, :update, :destroy]
 	#authorize_resource
 	def index
-		@cell_groups = CellGroup.all.alphabetical.paginate(page: params[:page]).per_page(10)
+		@cell_groups = CellGroup.all.alphabetical
 		@leaders = Member.for_leader
+		respond_to do |format|
+			format.html
+			format.json
+		  end
 	end
 
 	def edit
 	end
 
-	def new # checkout page
-		@cell_group = CellGroup.new
+	def new
 	end
 
 	def show
@@ -18,12 +21,11 @@ class CellGroupsController < ApplicationController
 	
 	def create
 		@cell_group = CellGroup.new(cell_group_params)
-		if @cell_group.save
-			flash[:notice] = "Successfully added Cell Group #{@cell_group.name}."
-			redirect_to :action => 'new'
+		if @cell_group.save!
+			redirect_to cell_groups_path, notice: "Successfully added #{@cell_group.name} as a cell group."
 		else
 			flash[:error] = "Error in creating Cell Group"
-			redirect_to :action => 'new'
+			redirect_to cell_groups_path
 		end
 	end
 
@@ -50,6 +52,7 @@ class CellGroupsController < ApplicationController
 		end
 
 		def cell_group_params
-			params.require(:cell_group).permit(:name, :gender)
+			#params.require(:cell_group).permit(:name, :gender)
+			params.permit(:name, :gender)
 		end
 end
