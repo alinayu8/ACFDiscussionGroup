@@ -1,1 +1,38 @@
-members
+<div class="row">
+    <h2 class="col s6">members</h2>
+    <div id="create_member_button"><i class="add right medium material-icons"><%= link_to 'add_circle', new_member_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '.modal-window'} %></i></div>
+    <br><br>
+</div>
+
+<table class="highlight">
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Year</th>
+    <th colspan="2"></th>
+    </tr>
+</thead>
+
+<tbody>
+    <% @members.each do |member| %>
+    <tr>
+        <td><%= member.name %></td>
+        <td><%= member.gender %></td>
+        <td><%= member.year %></td>
+        <td><i class="material-icons"><%= link_to 'edit', edit_member_path(member), {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '.modal-window'} %></i></td>
+        <td><%= link_to(member_path(member), method: :delete, data: {confirm: 'Are you sure you wish to delete this member?'}) do %>
+            <i class="material-icons">delete</i>
+        <% end %></td>
+    </tr>
+    <% end %>
+    <tr>
+        
+    </tr>
+</tbody>
+
+</table>
+<br>
+<br>
+
+<div class="modal-window"></div>
