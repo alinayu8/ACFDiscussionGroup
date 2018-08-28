@@ -1,0 +1,5 @@
+$(".modal-window").html("<%= j (render 'edit') %>");
+
+$('.close').on('click', function(){
+    $(".modal-window").html("");
+});

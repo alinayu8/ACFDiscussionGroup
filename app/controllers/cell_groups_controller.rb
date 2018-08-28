@@ -11,9 +11,18 @@ class CellGroupsController < ApplicationController
 	end
 
 	def edit
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def new
+		@cell_group = CellGroup.new
+		respond_to do |format|
+			format.html
+			format.js
+		end
 	end
 
 	def show
@@ -21,7 +30,7 @@ class CellGroupsController < ApplicationController
 	
 	def create
 		@cell_group = CellGroup.new(cell_group_params)
-		if @cell_group.save!
+		if @cell_group.save
 			redirect_to cell_groups_path, notice: "Successfully added #{@cell_group.name} as a cell group."
 		else
 			flash[:error] = "Error in creating Cell Group"
@@ -34,15 +43,17 @@ class CellGroupsController < ApplicationController
 			flash[:notice] = "Successfully updated #{@cell_group.name}."
 			redirect_to @cell_group
 		else
-			render action: 'edit'
+			flash[:error] = "Error in editing #{@cell_group.name}"
+			redirect_to cell_groups_path
 		end
 	end
 
 	def destroy 
 		if @cell_group.destroy
-			redirect_to cell_groups_url, notice: "Successfully removed Cell Group #{@cell_group.id}."
+			redirect_to cell_groups_url, notice: "Successfully removed Cell Group #{@cell_group.name}."
 		else
-			render action: 'show'
+			flash[:error] = "Error in deleting #{@cell_group.name}"
+			redirect_to cell_groups_path
 		end
 	end
 
@@ -52,7 +63,6 @@ class CellGroupsController < ApplicationController
 		end
 
 		def cell_group_params
-			#params.require(:cell_group).permit(:name, :gender)
-			params.permit(:name, :gender)
+			params.require(:cell_group).permit(:name, :gender)
 		end
 end

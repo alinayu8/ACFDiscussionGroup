@@ -11,43 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
-
-// Cell groups
-$(document).ready(function(){
-    $('#create_cg_button').on('click', function(){
-      $('#overlay_box').show();
-    });
-
-    $('.close').on('click', function(){
-      $('#overlay_box').hide();
-    });
-});
-
-$(function(){
-    $("form").submit(function(event){
-      event.preventDefault();
-  
-      var action = $(this).attr('action');
-      var method = $(this).attr('method');
-
-      var name = $(this).find('#cell_group_name').val();
-      var gender = $(this).find('#cell_group_gender_male').val();
-      var female = $(this).find('#cell_group_gender_female').val();
-      if (gender == undefined) {
-        gender = female;
-      }
-
-  
-      $.ajax({
-        method: method,
-        url: action,
-        data: { name: name, gender: gender }
-      });
-
-  
-    });
-  });
+//= require turbolinks
+//= require_tree.
