@@ -19,6 +19,7 @@ class Member < ApplicationRecord
   scope :have_cg, -> { where.not(cellGroup: nil) }
   scope :for_graduates, ->{ where("year > ?", 4) }
   scope :active, ->{ where(is_active: true) }
+  scope :inactive, ->{ where(is_active: false) }
 
   # Functions
   def truncate_gender

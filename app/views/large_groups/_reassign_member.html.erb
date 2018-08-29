@@ -5,12 +5,13 @@
                 <%= f.input :member_id, collection: @members %>
             </div>
             <div class="col s6"> 
-                <%= f.input :discussionGroup_id, collection: @dgs %>
+                <%= f.input :discussionGroup_id, label: 'Discussion group', collection: @dgs %>
             </div>
         </div>
         <div class="row">
-            <div class="col s4 offset-s8"> 
-                <%= f.button :submit %>
+            <div class="col s5 offset-s7"> 
+                <br>
+                <%= f.submit 'Add to discussion group', class: 'btn' %>
             </div>
         </div>
     <% end %>
