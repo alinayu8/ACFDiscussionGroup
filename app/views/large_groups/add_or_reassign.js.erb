@@ -1,0 +1,15 @@
+$(".modal-window").html("<%= j (render 'add_or_reassign') %>");
+
+$('.close').on('click', function(){
+    $(".modal-window").html("");
+});
+
+$("#add_prompt").on('click', function(){
+    $("#prompt").remove();
+    $(".modal-content").append("<%= j (render 'create_member') %>");
+});
+
+$("#reassign_prompt").on('click', function(){
+    $("#prompt").remove();
+    $(".modal-content").append("<%= j (render 'reassign_member') %>");
+});

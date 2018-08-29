@@ -84,4 +84,3 @@ gem 'oauth2'
 gem 'figaro'
 gem 'best_in_place', '~> 3.0.1'
 gem 'whenever', require: false
-gem 'font-awesome-rails'

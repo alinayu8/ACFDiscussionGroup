@@ -1,0 +1,17 @@
+<div id="create_member_modal">
+    <%= simple_form_for @memberDg do |f| %>
+        <div class="row">
+            <div class="col s6"> 
+                <%= f.input :member_id, collection: @members %>
+            </div>
+            <div class="col s6"> 
+                <%= f.input :discussionGroup_id, collection: @dgs %>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s4 offset-s8"> 
+                <%= f.button :submit %>
+            </div>
+        </div>
+    <% end %>
+</div>
