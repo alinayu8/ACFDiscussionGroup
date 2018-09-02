@@ -1,0 +1,22 @@
+<table class="highlight">
+    <thead>
+        <tr>
+            <th colspan="3">Inactive Members</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% Member.inactive.each do |m| %>
+            <tr>
+                <td><%= link_to m.name, member_path(m) %></td>
+                <% if m.cellGroup.nil? %>
+                    <td>No Cell Group</td>
+                <% else %>
+                    <td><%= link_to m.cellGroup.name, cell_group_path(m.cellGroup) %></td>
+                <% end %>
+                <td><%= m.truncate_gender %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<br>
+<br>

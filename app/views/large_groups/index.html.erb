@@ -19,7 +19,7 @@
                
             
             <td class="nicer"> <%= link_to "large group " + large_group.session_number.to_s, large_group_path(large_group)%> </td>
-            <td class="nicer2"> <%= large_group.date.strftime("%m/%d")%></td>
+            <td class="nicer2"> <%= large_group.date.strftime("%m/%d")%> </td>
 
           <td><i class="material-icons"><%= link_to('edit', large_group_path(large_group))%></i></td>
           <td><%= link_to(large_group_path(large_group), method: :delete, data: {confirm: 'Are you sure you wish to delete this cell_group?'}) do %>

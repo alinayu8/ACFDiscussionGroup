@@ -1,13 +1,13 @@
 class Member < ApplicationRecord
   belongs_to :cellGroup, optional: true
-  has_many :memberDgs
+  has_many :memberDgs, dependent: :destroy
+  accepts_nested_attributes_for :memberDgs, allow_destroy: true, reject_if: :all_blank
 
   #attr_accessor :name, :cellGroup, :gender
 
   # Validations
   validates_presence_of :name, :gender, :year
   validates_inclusion_of :gender, in: %w(  Male Female ), message: "is not recognized in the system"
-  validate :gender_matches_cg
   validate :cg_exists
 
   # Scopes
@@ -19,6 +19,7 @@ class Member < ApplicationRecord
   scope :have_cg, -> { where.not(cellGroup: nil) }
   scope :for_graduates, ->{ where("year > ?", 4) }
   scope :active, ->{ where(is_active: true) }
+  scope :inactive, ->{ where(is_active: false) }
 
   # Functions
   def truncate_gender
@@ -26,12 +27,6 @@ class Member < ApplicationRecord
       return "M"
     else
       return "F"
-    end
-  end
-
-  def gender_matches_cg
-    if self.cellGroup != nil 
-      self.gender == self.cellGroup.gender
     end
   end
 

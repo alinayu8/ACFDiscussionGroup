@@ -5,14 +5,18 @@
     <%= simple_form_for(@cell_group) do |f| %>
         <!-- No longer works because using jquery <%= f.error_notification %> -->
         <div class="row">
-            <div class="form-inputs">
+            <div class="col s6">
                 <%= f.input :name %>
+            </div>
+            <div class="col s6">
+                <%= f.label :gender %><br><br>
                 <%= f.collection_radio_buttons :gender, [["Male", "Male"] ,["Female", "Female"]], :first, :last, label: true  %>
             </div>
-        </div>
-        <div class="row">
-            <div class="form-actions col s8">
-                <%= f.button :submit %>
+            <div class="row">
+                <div class="col s8 offset-s8">
+                    <br><br>
+                    <%= f.button :submit %>
+                </div>
             </div>
         </div>
     <% end %>

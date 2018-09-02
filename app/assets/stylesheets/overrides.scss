@@ -48,6 +48,14 @@
     color: #7a7874;
   }
 
+  h4 {
+    font-size: 1rem !important;
+    font-family: 'Raleway', sans-serif !important;
+    margin: 0 !important;
+    color: black;
+  }
+
+
   #acf-logo:hover {
     background-color:rgba(0, 0, 0, 0.1);
   }
@@ -112,20 +120,32 @@
     right: 4.7rem;
   }
 
-  /********** OVERLAY ********/
+  /********** MODAL ********/
 
-.modal-content {
-  position: absolute;
-  height: 600px;
-  width: 800px;
+.modal-window {
+  position: fixed;
   margin: 0 auto;
   left: 50%;
   top: 50%; 
+}
+
+.modal-text{
+  color: rgba(0,0,0,.70) !important;
+}
+
+.modal-content {
+  position: absolute;
+  height: 300px;
+  width: 800px;
   margin-left: -400px; /* half the width */
-  margin-top: -300px; /* half the height */
+  margin-top: -150px; /* half the height */
   background-color: rgba(255,255,255,.90);
   padding: 30px;
   box-shadow: 2px 2px 5px rgba(0,0,0,.50);
+}
+
+.select {
+  display: block !important;
 }
 
 .string {
@@ -137,6 +157,7 @@ abbr[title] {
   border-bottom: 0px !important;
   text-decoration: none !important;
 }
+
 
   /********** FOOTER ********/
   
@@ -211,7 +232,7 @@ abbr[title] {
   
   table {
     font-family: 'Raleway', sans-serif;
-    
+    table-layout: fixed;
 
   }
 
@@ -284,7 +305,7 @@ abbr[title] {
   .btn {
     font-family: 'Raleway';
     background-color: #7a7874 !important;
-    color: #000;
+    color: white !important;
   }
   
   .btn:hover {
@@ -319,11 +340,11 @@ abbr[title] {
     font-size: 1rem !important;
   }
 
-  .close {
+  .close, .attend, #add_prompt, #reassign_prompt {
     cursor: pointer;
   }
 
-  input[type=text]:focus {
+  input[type=text]:focus, input[type=number]:focus {
     border-bottom: 1px solid #000 !important;
     box-shadow: 0 1px 0 0 #000 !important;
   }

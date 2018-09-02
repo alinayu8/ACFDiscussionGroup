@@ -41,6 +41,33 @@ class DiscussionGroup < ApplicationRecord
     return dg
   end
 
+  def self.reset(large_group)
+    dgs = DiscussionGroup.all.where(largeGroup: large_group).alphabetical
+
+    # reorganize discussion groups
+    dgs.each do |dg|
+      MemberDg.select{ |mem| (mem.member.cg_exists) && (mem.discussionGroup == dg)}.each do |m|
+        dg = dgs.select{ |dg| dg.leader == m.member.cellGroup.leader}.first 
+        m.update!(discussionGroup: dg)
+      end
+      dg.update_attributes(:randomized => false)
+    end
+
+    # assign the other members
+    other_members = MemberDg.select{ |mem| (!mem.member.cg_exists) && (dgs.include?(mem.discussionGroup))}
+    other_members.each do |m|
+      # assign by gender
+      if m.member.gender == "Male"
+        dg = DiscussionGroup.where(largeGroup: large_group).least_members(large_group, "Male")
+      else 
+        dg = DiscussionGroup.where(largeGroup: large_group).least_members(large_group, "Female")
+      end
+      m.update!(discussionGroup: dg)
+    end
+
+  end
+
+
   # initialize the discussion groups per cell group; distribute the unassociated members to appropriate dgs
   def self.initialize_dgs(large_group)
     # create dgs if don't exist

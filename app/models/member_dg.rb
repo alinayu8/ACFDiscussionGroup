@@ -9,5 +9,4 @@ class MemberDg < ApplicationRecord
   scope :for_member, ->(member) { where(member: member) }
   scope :for_dg, ->(dg) { where(dg: discussionGroup) }
   scope :for_attended, ->{ where(attended: true) }
-
 end
